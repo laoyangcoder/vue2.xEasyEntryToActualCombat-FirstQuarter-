@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>v-html v-text 插值语法</title>
+		
+	</head>
+	<body>
+		<div id="app">
+			<p>{{msg}}</p>
+			<p>圆的面积是：{{3.14*radius*radius}} ㎡</p>
+			<p>圆的周长是：{{permiter}} ㎡</p>
+			<p v-text="msg">你好啊</p>
+			<label v-text="msgHtml"></label>
+			<hr>
+			<p v-html="msgHtml">
+			</p>
+		</div>
+		<script src="../assets/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:'#app',
+				data:{
+					msg:'插值语法，vue.js',
+					radius:10,
+					msgHtml:'<span style="color: deeppink;">插值语法，vue.js</span>'
+				},
+				computed:{
+					permiter:function(){
+						return this.radius*2*3.14
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
