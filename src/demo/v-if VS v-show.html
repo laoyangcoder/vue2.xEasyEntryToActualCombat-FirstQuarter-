@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>v-if VS v-show</title>
+		<script src="../assets/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p v-if="price>100">太贵了</p>
+			<p v-else-if="80<price<100">有点高</p>
+			<p v-else-if="price>60">还是有点高</p>
+			<p v-else>价格合适</p>
+			<hr>
+			<p v-show="1>2">真</p>
+			<p v-show="false">假</p>
+			<hr>
+			<div v-show="person">
+				{{person.age}}{{person.name}}
+			</div>
+		</div>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:'#app',
+				data:{
+					isShow:true,
+					price:5,
+					person:null
+				}
+			})
+		</script>
+	</body>
+</html>
