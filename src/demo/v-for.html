@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>v-for</title>
+		<script src="../assets/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<!-- v-for 指令的需要写入的地方：需要循环那个dom元素，就把它写在这个元素上 -->
+				<li v-for="item in products">
+					{{item}}
+				</li>
+			</ul>
+			<hr>
+			<ul>
+				<!-- 含有索引的v-for：第一个参数是---项；第二个参数是---索引 -->
+				<li v-for="(p,k) in products">
+					{{k}}---{{p}}
+				</li>
+			</ul>
+			<hr>
+			<ul>
+				<li v-for="(p,k) of products">
+					{{k}}---{{p}}
+				</li>
+			</ul>
+			<hr>
+			<ul>
+				<!-- (p,k) 第一个参数是：对象属性的值；第二个参数是：对象属性的名称 -->
+				<li v-for="(p,k) in person">
+					{{k}}---{{p}}
+				</li>
+			</ul>
+			<hr>
+			<ul>
+				<!-- (p,k,index) 第一个参数是：对象属性的值；第二个参数是：对象属性的名称 ;第三个参数是：索引值-->
+				<li v-for="(p,k,index) in person">
+					{{index}}---{{k}}---{{p}}
+				</li>
+			</ul>
+			<hr>
+			<ul>
+				<li v-for="n in 10">
+					{{n-1}}
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					products: ['香烟', '啤酒', '饮料', '矿泉水'],
+					person: {
+						name: 'coderYang',
+						age: 18
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
