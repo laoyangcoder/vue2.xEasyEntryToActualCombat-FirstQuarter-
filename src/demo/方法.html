@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>方法</title>
+		<script src="../assets/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p>今天起床的状态是：{{getLearningState(state)}}</p>
+			<hr>
+			<ul>
+				<li v-for="s in getStudent14(filterAge)">姓名：{{s.name}}---年龄：{{s.age}}</li>
+			</ul>
+			<hr>
+			<ul>
+				<li v-for="s in students">姓名：{{s.name}}---年龄：{{s.age}}</li>
+			</ul>
+			<button type="button" @click="filterStudent">过滤掉小于15</button>
+		</div>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:'#app',
+				data:{
+					state:1,
+					students:[
+						{
+							name:'小明',
+							age:15
+						},
+						{
+							name:'小红',
+							age:14
+						},
+						{
+							name:'小王',
+							age:16
+						}
+					],
+					filterAge:10
+				},
+				methods:{
+					getLearningState:function(index){
+						const learningState=['学习','睡觉','吃饭','打豆豆'];
+						return learningState[index] || '未知状态';
+					},
+					getStudent14:function(age){
+						return this.students.filter((n)=>n.age>age);
+					},
+					filterStudent:()=>{
+						console.log(this.students)
+						// let temp=this.students.filter((n)=>n.age>15);
+						// this.students=temp;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
