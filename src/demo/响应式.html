@@ -9,38 +9,43 @@
 		<div id="app">
 			<p style="text-align: center;font-size: 30px;color: deeppink;">北京时间：{{nowTime}}</p>
 			<hr>
-			<p>我叫{{person.name}},今年{{person.age}}岁了。</p>
+			<p>我的名字是：{{person.name}}，年龄是：{{person.age}}</p>
 			<button type="button" @click="showAge">显示年龄</button>
 			<hr>
 			<ul>
-				<li v-for="f in fruits" style="font-size: 40px;">{{f}}</li>
+				<li v-for="f in fruits" style="font-size: 30px;">{{f}}</li>
 			</ul>
-			<button type="button" @click="edit">修改第2个元素为葡萄</button>
+			<button type="button" @click="edit">修改第2个为葡萄</button>
 		</div>
 		<script src="../js/timeTool.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			var app=new Vue({
-				el:'#app',
-				data:{
-					nowTime:'',
-					person:{
-						name:'coderYang',
+			var app = new Vue({
+				el: '#app',
+				data: {
+					nowTime: '',
+					person: {
+						name: 'coderYang',
+						//解决方案1：初始化的时候就给它age属性
+						// age:undefined
 					},
-					fruits:['🍎','🍌','🍓']
+					fruits: ['🍎', '🍌', '🍓']
 				},
-				created:function(){
-					let _this=this;
+				created: function() {
+					let _this = this;
 					// setInterval(function(){
 					// 	_this.nowTime=getNowTime();
-					// },1000)
+					// },1000);
 				},
-				methods:{
-					showAge:function(){
-						Vue.set(this.person,'age',20)
+				methods: {
+					showAge: function() {
+						// this.person.age=18;
+						//解决方案2：使用Vue.set()
+						Vue.set(this.person, 'age', 20);
 					},
-					edit:function(){
-						// Vue.set(this.fruits,1,'🍇')
-						this.fruits.splice(10);
+					edit: function() {
+						// this.fruits[1] = '🍇';
+						// Vue.set(this.fruits,1,'🍇');
+						this.fruits.splice(2,1,'🍇')
 					}
 				}
 			})
