@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>v-bind</title>
+		<script src="../assets/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.pRed{
+				color: red;
+			}
+			.styleA{
+				color: deeppink;
+			}
+			.styleB{
+				font-size: 30px;
+			}
+			.styleC{
+				background-color: #000000;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="" method="">
+			<div id="app">
+				<input v-bind:type="inputType">
+				<button v-bind:type="btnType">重置</button>
+				<hr>
+				<img src="../imgs/天空.png" alt="" width="50" height="50">
+				<img :src="vuelog"  width="50" height="50">
+				<img :src="'../imgs/'+tiankong"  width="50" height="50">
+				<hr>
+				<p :class="baseStyle">基础用法</p>
+				<p :class="{pRed:isTrue}">动态样式</p>
+				<p :class="[bindA,bindB]">多个样式</p>
+				<p :class="[bindA,{styleB:isTrue,styleC:isTrue}]">多个样式动态</p>
+				<hr>
+				<p :style="{fontSize:100+'px'}">style样式</p>
+				<p :style="[styleObjA,styleObjB]">多个style写法</p>
+			</div>
+		</form>
+		
+		<script type="text/javascript">
+			var app=new Vue({
+				el:'#app',
+				data:{
+					btnType:'reset',
+					inputType:'password',
+					vuelog:'../imgs/天空.png',
+					tiankong:'天空.png',
+					baseStyle:'pRed',
+					isTrue:true,
+					bindA:'styleA',
+					bindB:'styleB',
+					bigSize:50,
+					styleObjA:{
+						fontSize:'20px',
+						color:'blue'
+					},
+					styleObjB:{
+						border:'1px solid black',
+						padding:'5px'
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
