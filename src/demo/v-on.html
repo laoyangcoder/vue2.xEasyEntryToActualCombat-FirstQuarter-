@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>v-on</title>
+		<script src="../assets/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<button type="button" v-on:click.once="addOne">点击+1</button>
+			<p>你点击了按钮{{count}}次！</p>
+			<hr>
+			<input type="text" v-model="content" v-on:keydown.13="showContext">
+		</div>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:'#app',
+				data:{
+					count:0,
+					content:''
+				},
+				methods:{
+					addOne:function(e){
+						let newCount=this.count+1;
+						this.count=newCount;
+						console.log(e);
+					},
+					showContext:function(e){
+						// if (e.keyCode==13) {
+						// 	alert('你刚才输入的内容是：'+this.content)
+						// }
+						alert('你刚才输入的内容是：'+this.content)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
