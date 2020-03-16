@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>双向数据绑定</title>
+		<script src="../assets/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" value="请输入吧!!!"/>
+			<input type="text" v-model="inputText" value="请输入吧!!!">
+			<p>{{inputText}}</p>
+			<hr>
+			<p>
+				<span>🏀</span>
+				<input type="checkbox" checked="checked">
+				<input type="checkbox" v-model="cbSelct" checked="checked">
+			</p>
+			<hr >
+			<p>
+				<textarea rows="5" cols="3" v-model="teaMessage">
+					
+				</textarea>
+				<span style="color: deeppink;">{{teaMessage}}</span>
+			</p>
+			<hr>
+			<p>
+				兴趣爱好:
+				<span>🏀</span><input type="checkbox" v-model="baskball" value="0">
+				<span>⚽</span><input type="checkbox" v-model="football" value="1">
+				<span>🏓</span><input type="checkbox" v-model="pingpang" value="2">
+				<span>你所选择的内容是：{{baskball}}{{football}}{{pingpang}}</span>
+			</p>
+			<hr>
+			<p>
+				兴趣爱好:
+				<span>🏀</span><input type="checkbox" v-model="checks" value="🏀">
+				<span>⚽</span><input type="checkbox" v-model="checks" value="⚽">
+				<span>🏓</span><input type="checkbox" v-model="checks" value="🏓">
+				<span>你所选择的内容是：{{checks}}</span>
+			</p>
+			<hr>
+			<p>
+				<span>男</span><input type="radio" value="man" v-model="gander">
+				<span>女</span><input type="radio" value="woman" v-model="gander">
+				<span>你选择的是：{{gander}}</span>
+			</p>
+			<hr>
+			<p>
+				<select v-model="fruitsSelect">
+					<option value ="" disabled="disabled">请选择</option>
+					<option v-for="f in fruits" v-bind:value="f.id">{{f.name}}</option>
+				</select>
+				<span>你选择的是：{{fruitsSelect}}</span>
+			</p>
+			<hr>
+			<p>
+				<select v-model="fruitsSelects" multiple="multiple">
+					<option value ="" disabled="disabled">请选择</option>
+					<option v-for="f in fruits" v-bind:value="f.id">{{f.name}}</option>
+				</select>
+				<span>你选择的是：{{fruitsSelects}}</span>
+			</p>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					inputText:'请输入。。。',
+					cbSelct:'',
+					teaMessage:'',
+					baskball:'',
+					football:'',
+					pingpang:'',
+					checks:[],
+					gander:'',
+					fruitsSelect:'',
+					fruitsSelects:[],
+					fruits:[
+						{
+							name:'香蕉',
+							id:1
+						},
+						{
+							name:'苹果',
+							id:2
+						},
+						{
+							name:'草莓',
+							id:3
+						}
+						
+					]
+				}
+			})
+		</script>
+	</body>
+</html>
