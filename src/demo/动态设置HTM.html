@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>动态设置HTM</title>
+		<script src="../assets/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			
+			<p>{{myhtml}}</p>
+			<p v-html="myhtml"></p>
+		</div>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:'#app',
+				data:{
+					myhtml:'<strong style="color: red;font-size: 30px;">我爱我的祖国</strong>'
+				}
+			})
+		</script>
+	</body>
+</html>
