@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>过滤器</title>
+		<script src="../assets/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body {
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h2>XX购物车</h2>
+			<table border="" cellspacing="" cellpadding="">
+				<tr>
+					<th>产品名称</th>
+					<th>产品单价</th>
+					<th>产品数量</th>
+					<th>小计</th>
+				</tr>
+				<tr v-for="f in fruits">
+					<td>{{f.name}}</td>
+					<td>{{f.price}}</td>
+					<td>{{f.count}}</td>
+					<td>{{f.subtotal}}</td>
+				</tr>
+			</table>
+			<hr>
+			<table border="" cellspacing="" cellpadding="">
+				<tr>
+					<th>产品名称</th>
+					<th>产品单价</th>
+					<th>产品数量</th>
+					<th>小计</th>
+				</tr>
+				<tr v-for="f in fruits">
+					<td>{{f.name}}</td>
+					<td>{{f.price.toFixed(2)+' 元/斤'}}</td>
+					<td>{{f.count+' 斤'}}</td>
+					<td>{{'￥ '+f.subtotal.toFixed(2)+' 元'}}</td>
+				</tr>
+			</table>
+			<hr>
+			<table border="" cellspacing="" cellpadding="">
+				<tr>
+					<th>产品名称</th>
+					<th>产品单价</th>
+					<th>产品数量</th>
+					<th>小计</th>
+				</tr>
+				<tr v-for="f in fruits">
+					<td>{{f.name}}</td>
+					<td>{{f.price | formatPrice}}</td>
+					<td>{{f.count | formatCount}}</td>
+					<td>{{f.subtotal | formatSubtotal}}</td>
+				</tr>
+			</table>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					fruits: [{
+							name: '🍌',
+							price: 3,
+							count: 2,
+							subtotal: 6
+						},
+						{
+							name: '🍊',
+							price: 4.5,
+							count: 3,
+							subtotal: 13.5
+						},
+						{
+							name: '🍎',
+							price: 3.5,
+							count: 4,
+							subtotal: 14
+						},
+					]
+				},
+				filters: {
+					formatPrice: function(val) {
+						// console.log(this.fruits)
+						return val.toFixed(2)+' 元/斤'
+					},
+					formatCount:function(val){
+						return val+' 斤';
+					},
+					formatSubtotal:function(val){
+						return '￥：'+val.toFixed(2)+' 元';
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
