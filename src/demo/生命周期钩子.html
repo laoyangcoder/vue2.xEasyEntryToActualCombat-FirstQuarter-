@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>生命周期钩子</title>
+		<script src="../assets/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h2>XX购物车</h2>
+			<table border="" cellspacing="" cellpadding="">
+				<tr>
+					<th>产品名称</th>
+					<th>产品单价</th>
+					<th>产品数量</th>
+					<th>小计</th>
+				</tr>
+				<tr v-for="f in fruits">
+					<td>{{f.name}}</td>
+					<td>{{f.price}}</td>
+					<td>{{f.count}}</td>
+					<td>{{f.subtotal}}</td>
+				</tr>
+			</table>
+		</div>
+		<button type="button" onclick="destory()">销毁vue对象</button>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:'#app',
+				data:{
+					fruits:[]
+				},
+				beforeCreate:function(){
+					console.log('beforeCreate')
+				},
+				created:()=>{
+					console.log('created');
+					this.fruits=[{
+							name: '🍌',
+							price: 3,
+							count: 2,
+							subtotal: 6
+						},
+						{
+							name: '🍊',
+							price: 4.5,
+							count: 3,
+							subtotal: 13.5
+						},
+						{
+							name: '🍎',
+							price: 3.5,
+							count: 4,
+							subtotal: 14
+						},
+					];
+				},
+				beforeMount:function(){
+					console.log('beforeMount')
+				},
+				mounted:function(){
+					console.log('mounted')
+				},
+				beforeUpdate:function(){
+					console.log('beforeUpdate')
+				},
+				updated:function(){
+					console.log('updated')
+				},
+				beforeDestroy:function(){
+					console.log('beforeDestroy')
+				},
+				destroyed:function(){
+					console.log('destroyed')
+				}
+			})
+		
+		function destory(){
+			app.$destroy();
+		}
+		</script>
+	</body>
+</html>
