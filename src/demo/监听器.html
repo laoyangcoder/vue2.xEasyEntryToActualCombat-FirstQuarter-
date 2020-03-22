@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>监听器</title>
+		<script src="../assets/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p>
+				<input type="text" v-model="myValue">
+			</p>
+			<p v-html="msg"></p>
+			<hr>
+			修改年龄：<input type="text" v-model="person.age">
+			<p>
+				我的名字是：{{person.name}}，今年{{person.age}}岁了
+			</p>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					myValue: '',
+					msg: '',
+					person: {
+						name: 'coderYang',
+						age: 18
+					}
+				},
+				watch: {
+					myValue: function(n, o) {
+						let oldValue = '<span style="color: palevioletred;">旧值：' + o + '</span>';
+						let newValue = '<span style="color: red;">新值：' + n + '</span>';
+						this.msg = oldValue + ',' + newValue;
+					},
+					'person.age': function(n, o) {
+						console.log('新值：' + n);
+						console.log('旧值：' + o);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
