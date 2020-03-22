@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>过渡和动画</title>
+		<link rel="stylesheet" type="text/css" href="../css/animate.css" />
+		<script src="../assets/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			/* 正在进入和正在离开 */
+			.fade111-enter-active,
+			.fade111-leave-active {
+				transition: opacity .5s;
+			}
+
+			/* 进入和离开 */
+			.fade111-enter,
+			.fade111-leave-to
+
+			/* .fade-leave-active below version 2.1.8 */
+				{
+				opacity: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<button @click="isShow=!isShow">显示/隐藏</button>
+			<transition name="fade111">
+				<p v-if="isShow">Hi,vue.js</p>
+			</transition>
+			<hr>
+			<transition enter-active-class="animated bounceIn" leave-active-class="animated bounceOut">
+				<p v-if="isShow">Hi,vue.js2</p>
+			</transition>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					isShow: true
+				}
+			})
+		</script>
+	</body>
+</html>
