@@ -1,0 +1,48 @@
+body{
+	font-size: 3.125rem;
+}
+.btn-redict{
+	font-size: 3.9rem;
+	font-weight: bold;
+	text-decoration: none;
+}
+.app-titile {
+	color: #6985AE;
+	font-size: 3.9rem;
+	text-align: center;
+	margin-top: 10.25rem;
+	font-weight: bold;
+}
+.explain{
+	margin: 1.25rem 0rem;
+	color: #9E9E9E;
+}
+.content-box{
+	width: 100vw;
+	height: 100vh;
+	padding: 5.125rem;
+}
+.input-txt{
+	font-size: 2.875rem;
+	width: 100%;
+	height: 9.375rem;
+	border: 0.0625rem solid #9E9E9E;
+}
+.input-group{
+	margin: 10.125rem 0rem;
+	width: 100%;
+}
+.btn-box{
+	width: 100%;
+	position:absolute;
+	/* bottom: 5.25rem; */
+	text-align: center;
+	margin-top: 5.25rem;
+	margin-bottom: 5.25rem;
+}
+.btn-box button{
+	font-size: 4.125rem;
+	width: 70%;
+	height: 10.3125rem;
+	line-height: 10.3125rem;
+}

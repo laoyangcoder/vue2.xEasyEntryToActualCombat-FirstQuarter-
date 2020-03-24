@@ -1,0 +1,70 @@
+body{
+	font-size: 3.125rem;
+}
+.app-titile {
+	color: white;
+	font-size: 3.9rem;
+	text-align: center;
+	margin-top: 10.25rem;
+}
+
+.ad {
+	width: 100%;
+	height: 100%;
+}
+
+.box {
+	padding: 2.125rem;
+}
+
+.head {
+	background-color: rgb(121, 182, 227);
+}
+
+.content-title {
+	color: rgb(2, 2, 2);
+	font-weight: bold;
+	border-bottom-color: rgb(242, 242, 242);
+	border-bottom-width: 0.3125rem;
+	border-bottom-style: solid;
+}
+.explain{
+	font-weight: bold;
+	margin: 1.25rem;
+}
+.content-title-txt {
+	border-bottom-color: rgb(165, 202, 226);
+	border-bottom-width: 0.5rem;
+	border-bottom-style: solid;
+}
+
+.carinfo {
+	border: 4px dashed rgb(242, 242, 242);
+	/* height: 50.25rem; */
+	padding: 4.25rem;
+	margin-top: 3.125rem;
+	width: 100%;
+}
+.btn-box{
+	width: 100%;
+	position:absolute;
+	/* bottom: 5.25rem; */
+	text-align: center;
+	margin-top: 5.25rem;
+	margin-bottom: 5.25rem;
+}
+.btn-box a{
+	font-size: 4.125rem;
+	width: 70%;
+	height: 10.3125rem;
+	line-height: 10.3125rem;
+}
+.history-box{
+	background-color: #6FA6CF;
+	display: flex;
+	padding: 6.25rem;
+	margin: 3.125rem 0.25rem;
+	border-radius: 5%;
+	justify-content: space-between;
+	color: white;
+}

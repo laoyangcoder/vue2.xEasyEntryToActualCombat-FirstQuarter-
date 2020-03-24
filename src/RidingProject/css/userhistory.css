@@ -1,0 +1,20 @@
+body{
+	font-size: 3.125rem;
+}
+.content-box{
+	width: 100%;
+	height: 100%;
+	padding: 5.125rem;
+}
+.btn-redict{
+	font-size: 3.9rem;
+	font-weight: bold;
+	text-decoration: none;
+}
+.app-titile {
+	color: #6985AE;
+	font-size: 3.9rem;
+	text-align: center;
+	margin-top: 10.25rem;
+	font-weight: bold;
+}
