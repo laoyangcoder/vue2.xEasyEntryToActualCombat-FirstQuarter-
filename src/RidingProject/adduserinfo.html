@@ -32,7 +32,7 @@
 			    <input type="text" class="input-txt" id="tb_local" placeholder="请输入上车站" v-model="userinfo.local" required="required">
 			  </div>
 			  <div class="btn-box">
-				  <button type="submit" class="btn btn-primary btn-lg" @click="saveUserinfo">提交</button>
+				  <button type="submit" @submit="myform" class="btn btn-primary btn-lg" @click="saveUserinfo">提交</button>
 			  </div>
 			</form>
 		</div>
@@ -50,7 +50,6 @@
 				},
 				methods:{
 					saveUserinfo:function(){
-						
 						//将表单中的数据提交到服务器存储在数据库中
 						let user=this.userinfo;
 						let nowTime=new Date();
@@ -69,6 +68,12 @@
 							let arrstr=JSON.stringify(arr);
 							localStorage.setItem("userinfo",arrstr)
 						}
+						//这个加上后会存在不进行页面跳转。原因是，submit按钮。所以，在下面的myform方法中解决问题
+						window.location.href='index.html'
+					},
+					myform:function(){
+						// 防止表单提交刷新页面,而不能执行跳转功能
+						return false;
 					}
 				}
 			})

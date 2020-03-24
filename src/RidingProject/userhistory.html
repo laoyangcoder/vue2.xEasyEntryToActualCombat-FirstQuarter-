@@ -10,46 +10,35 @@
 		<link rel="stylesheet" type="text/css" href="css/userhistory.css" />
 	</head>
 	<body>
-		<div class="content-box">
+		<div class="content-box" id="app">
 			<a href="index.html" class="btn-redict">
 				<</a> <p class="app-titile">乘车历史记录</p>
 					<table class="table table-bordered">
 						<tr>
 							<th>时间</th>
-							<th>车牌号</th>
 							<th>上车地点</th>
 						</tr>
-						<tr>
-							<td>2020年1月2日 13：13：13</td>
-							<td>陕A·123456</td>
-							<td>幸福南路</td>
-						</tr>
-						<tr>
-							<td>2020年1月2日 13：13：13</td>
-							<td>陕A·123456</td>
-							<td>幸福南路</td>
-						</tr>
-						<tr>
-							<td>2020年1月2日 13：13：13</td>
-							<td>陕A·123456</td>
-							<td>幸福南路</td>
-						</tr>
-						<tr>
-							<td>2020年1月2日 13：13：13</td>
-							<td>陕A·123456</td>
-							<td>幸福南路</td>
-						</tr>
-						<tr>
-							<td>2020年1月2日 13：13：13</td>
-							<td>陕A·123456</td>
-							<td>幸福南路</td>
-						</tr>
-						<tr>
-							<td>2020年1月2日 13：13：13</td>
-							<td>陕A·123456</td>
-							<td>幸福南路</td>
+						<tr v-for="u in users">
+							<td>{{u.time}}</td>
+							<td>{{u.local}}</td>
 						</tr>
 					</table>
 		</div>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:'#app',
+				data:{
+					users:[]
+				},
+				created:function(){
+					//从api中获取到数据
+					
+					//获取localStorage中的数据
+					let arrString=localStorage.getItem("userinfo");
+					let arr=JSON.parse(arrString);
+					this.users=arr;
+				}
+			})
+		</script>
 	</body>
 </html>
