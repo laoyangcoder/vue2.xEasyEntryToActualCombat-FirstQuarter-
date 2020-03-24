@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
 	</head>
 	<body style="height: 100%">
-		<div style="height: 100%;">
+		<div style="height: 100%;" id="app">
 			<!-- 头部 -->
 			<div class="head">
 				<div class="container-fluid">
@@ -28,7 +28,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div>
 				<div class="container-fluid">
 					<p class="app-titile content-title"><span class="content-title-txt">乘客登记说明</span></p>
@@ -46,60 +46,39 @@
 							<tr>
 								<th colspan="2" class="text-center">车辆信息</th>
 							</tr>
-							<tr>
-								<td>
-									单位名称
-								</td>
-								<td>
-									公交六公司
-								</td>
-							</tr>
-							<tr>
-								<td>
-									车辆线路
-								</td>
-								<td>
-									幸福南路---东一路
-								</td>
-							</tr>
-							<tr>
-								<td>
-									车牌号
-								</td>
-								<td>
-									陕A·12345
-								</td>
-							</tr>
-							<tr>
-								<td>
-									驾驶员姓名
-								</td>
-								<td>
-									王小明
-								</td>
-							</tr>
-							<tr>
-								<td>
-									联系方式
-								</td>
-								<td>
-									189-9999-9999
-								</td>
+							<tr v-for="(val,keyName)  in carinfo">
+								<td>{{keyName}}</td>
+								<td>{{val}}</td>
 							</tr>
 						</table>
 					</div>
 				</div>
 			</div>
-			
+
 		</div>
-	<div class="btn-box">
-		<a href="adduserinfo.html" class="btn btn-primary btn-lg">乘车登记</a>
-	</div>
-		
-		
+		<div class="btn-box">
+			<a href="adduserinfo.html" class="btn btn-primary btn-lg">乘车登记</a>
+		</div>
+
+
 		<script type="text/javascript">
 			var app = new Vue({
-
+				el: '#app',
+				data: {
+					carinfo: {}
+				},
+				//生命周期钩子函数
+				created:function(){
+					//ajax请求，车辆信息
+					let carinfo={
+						'单位名称': '公交六公司',
+						'车辆线路': '幸福南路---东一路',
+						'车牌号': '陕A·12345',
+						'驾驶员姓名': '王小明',
+						'联系方式': '189-9999-9999'
+					};
+					this.carinfo=carinfo;
+				}
 			})
 		</script>
 	</body>
