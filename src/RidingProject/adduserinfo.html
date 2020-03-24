@@ -10,31 +10,68 @@
 	<link rel="stylesheet" type="text/css" href="css/adduserinfo.css"/>
 	</head>
 	<body>
-		<div class="content-box">
+		<div class="content-box" id="app">
 			<a href="index.html" class="btn-redict"><</a>
 			<p class="app-titile">乘车信息登记</p>
 			<p class="explain">尊敬的各位乘客，请填写以下信息（信息全部保密），以便特殊情况联系您。感谢您的理解、支持和配合。</p>
 			<form>
 			  <div class="form-group input-group">
 			    <label for="tb_name">姓名</label>
-			    <input type="text" class="input-txt" id="tb_name" placeholder="请输入姓名">
+			    <input type="text" class="input-txt" id="tb_name" placeholder="请输入姓名" v-model="userinfo.name" required="required">
 			  </div>
 			  <div class="form-group input-group">
 			    <label for="tb_phone">手机号</label>
-			    <input type="text" class="input-txt" id="tb_phone" placeholder="请输入手机号">
+			    <input type="text" class="input-txt" id="tb_phone" placeholder="请输入手机号" v-model="userinfo.phone" required="required">
 			  </div>
 			  <div class="form-group input-group">
 			    <label for="tb_idCard">身份证号</label>
-			    <input type="text" class="input-txt" id="tb_idCard" placeholder="请输入身份证">
+			    <input type="text" class="input-txt" id="tb_idCard" placeholder="请输入身份证" v-model="userinfo.idCard" required="required">
 			  </div>
 			  <div class="form-group input-group">
 			    <label for="tb_local">上车站</label>
-			    <input type="text" class="input-txt" id="tb_local" placeholder="请输入上车站">
+			    <input type="text" class="input-txt" id="tb_local" placeholder="请输入上车站" v-model="userinfo.local" required="required">
 			  </div>
 			  <div class="btn-box">
-				  <button type="submit" class="btn btn-primary btn-lg">提交</button>
+				  <button type="submit" class="btn btn-primary btn-lg" @click="saveUserinfo">提交</button>
 			  </div>
 			</form>
 		</div>
+		<script type="text/javascript">
+			var app=new Vue({
+				el:'#app',
+				data:{
+					userinfo:{
+						name:'',
+						phone:'',
+						idCard:'',
+						local:'',
+						time:''
+					}
+				},
+				methods:{
+					saveUserinfo:function(){
+						
+						//将表单中的数据提交到服务器存储在数据库中
+						let user=this.userinfo;
+						let nowTime=new Date();
+						user.time=nowTime.toLocaleDateString()+" "+nowTime.toLocaleTimeString();
+						
+						//获取localStorage中的数据
+						let arrString=localStorage.getItem("userinfo");
+						let arr=JSON.parse(arrString);
+						if (arr!=undefined && arr!=null) {
+							arr.push(user);
+							let arrstr=JSON.stringify(arr);
+							localStorage.setItem("userinfo",arrstr)
+						} else{
+							let arr=[];
+							arr.push(user);
+							let arrstr=JSON.stringify(arr);
+							localStorage.setItem("userinfo",arrstr)
+						}
+					}
+				}
+			})
+		</script>
 	</body>
 </html>
